@@ -253,3 +253,62 @@
             margin-top: 1rem;
             font-size: 1rem;
         }
+
+ /* ======================================================= */
+/* 💻 반응형 디자인 (Media Queries)                        */
+/* ======================================================= */
+
+/* 💊 태블릿 버전 (가로 해상도 768px 이상) */
+@media (min-width: 768px) {
+    body { padding: 20px; }
+    .main-header { margin-bottom: 2rem; }
+    .main-header h1 { font-size: 1.75rem; }
+    .main-header h2 { font-size: 1.25rem; }
+    
+    .product-block { padding: 1.75rem; margin-bottom: 2rem; }
+    .product-name { font-size: 1.35rem; }
+    .product-name .cn-name { font-size: 1.1rem; }
+    
+    .checklist-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } /* 태블릿: 2줄씩 표시 */
+    .check-text strong { font-size: 1rem; }
+    .check-text span { font-size: 0.875rem; }
+    
+    .photo-grid { grid-template-columns: repeat(3, 1fr); gap: 0.75rem; } /* 태블릿: 3칸씩 표시 */
+    
+    .page-btn { padding: 0.5rem 1rem; font-size: 1rem; }
+}
+
+/* 💻 PC 버전 (가로 해상도 1024px 이상) */
+@media (min-width: 1024px) {
+    .main-header h1 { font-size: 2rem; }
+    .main-header p { font-size: 0.875rem; }
+    
+    .product-block { padding: 2rem; margin-bottom: 2.5rem; }
+    
+    .title-section { padding-bottom: 1rem; margin-bottom: 1.5rem; }
+    .section-label { font-size: 0.875rem; }
+    .product-name { font-size: 1.5rem; }
+    .product-name .cn-name { font-size: 1.25rem; }
+    
+    .checklist-box { padding: 1.5rem; }
+    .check-item input[type="checkbox"] { width: 1.5rem; height: 1.5rem; }
+    
+    .photo-grid { grid-template-columns: repeat(5, 1fr); } /* PC: 5칸씩 표시 */
+    .photo-overlay span { font-size: 0.875rem; padding: 4px 12px; }
+}
+
+/* 페이지네이션 (페이지 번호) 스타일 */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+}
+.page-btn {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border-light);
+    background-color: white;
+    /* ... (중략) ... */
+}

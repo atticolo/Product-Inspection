@@ -1,3 +1,7 @@
+          /* 사진 마우스 오버 시 부드러운 효과 */
+        .photo-slot { transition: all 0.2s ease-in-out; }
+        .photo-slot:hover { transform: scale(1.02); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border-color: #3b82f6; }
+   
    /* 기본 색상 및 변수 설정 */
         :root {
             --primary: #3b82f6;

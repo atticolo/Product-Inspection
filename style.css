@@ -1,5 +1,12 @@
 
-        .photo-slot { transition: all 0.2s ease-in-out; }
+       @font-face {
+    font-family: 'Pretendard';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/pretendard@1.0/Pretendard-Thin.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
+       
+       .photo-slot { transition: all 0.2s ease-in-out; }
         .photo-slot:hover { transform: scale(1.02); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border-color: #3b82f6; }
    
    /* 변수  */
@@ -38,6 +45,7 @@
             font-size: 2rem;
             margin: 0 0 0.5rem 0;
             color: #111827;
+            font-weight: bold;
         }
         .main-header h2 {
             font-size: 1.25rem;
@@ -48,6 +56,13 @@
             font-size: 0.875rem;
             color: #9ca3af;
             margin-top: 1rem;
+        }
+
+        .main-header .count-number {
+            color: #000; 
+            font-weight: bold; 
+            margin-top: 20px;
+            font-size: 1.25rem;
         }
 
         /* 제품 박스 */

@@ -1,13 +1,11 @@
-        function openImageModal(element) {
+      function openImageModal(element) {
             const imgElement = element.querySelector('img');
             if (imgElement && imgElement.src) {
                 const modal = document.getElementById('image-modal');
                 const modalImg = document.getElementById('modal-image-element');
-                
                 modalImg.src = imgElement.src;
-                modal.classList.add('show'); 
-                
-                document.body.style.overflow = 'hidden'; 
+                modal.classList.add('show');
+                document.body.style.overflow = 'hidden';
             }
         }
 
@@ -15,39 +13,36 @@
             const modal = document.getElementById('image-modal');
             modal.classList.remove('show');
             document.getElementById('modal-image-element').src = '';
-            
             document.body.style.overflow = 'auto';
         }
 
-
         document.getElementById('image-modal').addEventListener('click', function(e) {
-            if (e.target === this) {
-                closeImageModal();
-            }
+            if (e.target === this) closeImageModal();
         });
 
 
-        const itemsPerPage = 3; // 숫자만 바꾸기
+        const itemsPerPage = 2; // 페이지 수량 변경
         let currentPage = 1;
+        let allProducts = []; 
+        let filteredProducts = []; 
 
         function setupPagination() {
-            const products = document.querySelectorAll('.product-block');
-            const totalPages = Math.ceil(products.length / itemsPerPage);
+            const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
             const paginationContainer = document.getElementById('pagination-container');
             const countDisplay = document.getElementById('total-count-display');
-            if(countDisplay) countDisplay.innerText = `등록된 총 제품: ${products.length}개 / 总产品数: ${products.length} 个`;
-
+            
+            if (countDisplay) {
+                countDisplay.innerText = `검색된 제품: ${filteredProducts.length}개 / 전체: ${allProducts.length}개`;
+            }
 
             paginationContainer.innerHTML = ''; 
-
-            if (totalPages <= 1) return;
+            if (totalPages <= 1) return; 
 
             for (let i = 1; i <= totalPages; i++) {
                 const btn = document.createElement('button');
                 btn.className = `page-btn ${i === currentPage ? 'active' : ''}`;
                 btn.innerText = i;
                 
-
                 btn.onclick = () => {
                     currentPage = i;
                     showPage(currentPage);
@@ -59,34 +54,58 @@
         }
 
         function showPage(page) {
-            const products = document.querySelectorAll('.product-block');
+            allProducts.forEach(product => product.style.display = 'none');
+
+
             const startIndex = (page - 1) * itemsPerPage;
             const endIndex = startIndex + itemsPerPage;
 
-            products.forEach((product, index) => {
+            filteredProducts.forEach((product, index) => {
                 if (index >= startIndex && index < endIndex) {
                     product.style.display = 'block';
-                } else {
-                    product.style.display = 'none';
                 }
             });
         }
-  
-        showPage(1); 
-        setupPagination(); 
 
-
-const topBtn = document.getElementById('top-btn');
-if (topBtn) {
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            topBtn.classList.add('visible');
-        } else {
-            topBtn.classList.remove('visible');
+        //위로 가기 버튼
+        const topBtn = document.getElementById('top-btn');
+        if (topBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) topBtn.classList.add('visible');
+                else topBtn.classList.remove('visible');
+            });
+            topBtn.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' }); 
+            });
         }
-    });
-    
-    topBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' }); 
-    });
-}
+
+        // 문서 로딩 완료 실행로직
+        window.addEventListener('DOMContentLoaded', () => {
+
+            allProducts = Array.from(document.querySelectorAll('.product-block'));
+            filteredProducts = [...allProducts]; 
+
+            showPage(1); 
+            setupPagination();
+
+            // 검색 기능 
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const keyword = e.target.value.toLowerCase().trim(); 
+
+                    if (keyword === '') {
+                        filteredProducts = [...allProducts];
+                    } else {
+                        filteredProducts = allProducts.filter(product => {
+                            const nameText = product.querySelector('.product-name').innerText.toLowerCase();
+                            return nameText.includes(keyword); 
+                        });
+                    }
+
+                    currentPage = 1;
+                    setupPagination();
+                    showPage(currentPage);
+                });
+            }
+        });

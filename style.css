@@ -1,0 +1,251 @@
+   /* 기본 색상 및 변수 설정 */
+        :root {
+            --primary: #3b82f6;
+            --bg-main: #f3f4f6;
+            --bg-card: #ffffff;
+            --text-dark: #1f2937;
+            --text-gray: #6b7280;
+            --border-light: #e5e7eb;
+        }
+
+        /* 전체 기본 스타일 */
+        * { 
+            box-sizing: border-box; 
+        }
+        body {
+            font-family: 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 20px;
+            line-height: 1.5;
+        }
+
+        /* 레이아웃 컨테이너 */
+        .container {
+            max-width: 1024px;
+            margin: 0 auto;
+        }
+
+        /* 문서 헤더 (최상단) */
+        .main-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .main-header h1 {
+            font-size: 2rem;
+            margin: 0 0 0.5rem 0;
+            color: #111827;
+        }
+        .main-header h2 {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin: 0;
+        }
+        .main-header p {
+            font-size: 0.875rem;
+            color: #9ca3af;
+            margin-top: 1rem;
+        }
+
+        /* 제품 블록 (하나의 제품을 감싸는 흰색 박스) */
+        .product-block {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-light);
+        }
+
+        /* 1. 제품 이름 섹션 */
+        .title-section {
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .section-label {
+            font-size: 0.875rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin: 0 0 0.25rem 0;
+        }
+        .product-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .product-name .cn-name {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            font-weight: normal;
+        }
+
+        /* 2. 검사 항목 섹션 */
+        .checklist-section {
+            margin-bottom: 2rem;
+        }
+        .checklist-box {
+            background-color: #f9fafb;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid var(--border-light);
+        }
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        @media (min-width: 768px) {
+            .checklist-grid { grid-template-columns: 1fr 1fr; }
+        }
+        .check-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background-color: white;
+            padding: 0.75rem;
+            border-radius: 4px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-light);
+        }
+        .check-item input[type="checkbox"] {
+            width: 1.5rem;
+            height: 1.5rem;
+            cursor: pointer;
+            accent-color: var(--primary);
+        }
+        .check-text {
+            display: flex;
+            flex-direction: column;
+        }
+        .check-text strong {
+            font-size: 1rem;
+            color: var(--text-dark);
+        }
+        .check-text span {
+            font-size: 0.875rem;
+            color: var(--text-gray);
+        }
+
+        /* 3. 사진 섹션 */
+        .photo-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 0.75rem;
+        }
+        .photo-header .desc {
+            font-size: 0.75rem;
+            color: #9ca3af;
+            margin: 0;
+        }
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+        @media (min-width: 640px) {
+            .photo-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        @media (min-width: 768px) {
+            .photo-grid { grid-template-columns: repeat(5, 1fr); }
+        }
+        .photo-slot {
+            aspect-ratio: 1 / 1;
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.2s ease-in-out;
+        }
+        .photo-slot:hover {
+            transform: scale(1.02);
+            border-color: var(--primary);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        
+        /* 사진 호버 시 '확대' 글씨 효과 */
+        .photo-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.2s;
+        }
+        .photo-slot:hover .photo-overlay {
+            opacity: 1;
+        }
+        .photo-overlay span {
+            background-color: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 999px;
+            font-size: 0.875rem;
+            font-weight: bold;
+        }
+
+        /* 팝업 모달 창 */
+        .modal-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 50;
+            display: none; /* 평소에는 숨김 */
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+        .modal-bg.show {
+            display: flex; /* 자바스크립트로 .show 가 추가되면 보임 */
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background-color: #374151;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s;
+        }
+        .modal-close-btn:hover { background-color: #4b5563; }
+        
+        .modal-bg img {
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 4px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+        }
+        .modal-desc {
+            color: #d1d5db;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }

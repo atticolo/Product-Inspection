@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>제품 검수 요청서 / 产品检验请求单</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+        /* 사진 마우스 오버 시 부드러운 효과 */
+        .photo-slot { transition: all 0.2s ease-in-out; }
+        .photo-slot:hover { transform: scale(1.02); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border-color: #3b82f6; }
+    </style>
+</head>
+<body>
+
+    <!-- ===================================================================== -->
+    <!-- ▼▼▼ HTML 영역 (나중에 index.html 에 남겨둘 본문 내용입니다) ▼▼▼ -->
+    <!-- ===================================================================== -->
+    <div class="container">
+        
+        <!-- 문서 전체 헤더 -->
+        <div class="main-header">
+            <h1>제품 검수 요청서</h1>
+            <h2>产品检验请求单 (Product Inspection Request)</h2>
+            <p>※ 아래 각 항목을 확인 후 체크해 주시기 바랍니다. (请确认以下各项后打勾。)</p>
+        </div>
+
+        <div id="product-list">
+            <!-- ▼▼▼ 제품 추가 시 여기서부터 복사 ▼▼▼ -->
+            <div class="product-block">
+                
+                <!-- 1. 제품 이름 -->
+                <div class="title-section">
+                    <p class="section-label">제품 이름 / 产品名称</p>
+                    <h3 class="product-name">
+                        와이드러쉬썬캡
+                        <span class="cn-name">/ 披肩防晒帽子</span>
+                    </h3>
+                </div>
+
+                <!-- 2. 검사 항목 -->
+                <div class="checklist-section">
+                    <p class="section-label">검사 항목 / 检查项目</p>
+                    <div class="checklist-box">
+                        <ul class="checklist-grid">
+                            <li class="check-item">
+                                <input type="checkbox">
+                                <div class="check-text">
+                                    <strong>색상</strong>
+                                    <span>颜色</span>
+                                </div>
+                            </li>
+                            <li class="check-item">
+                                <input type="checkbox">
+                                <div class="check-text">
+                                    <strong>오염 여부</strong>
+                                    <span>是否有污染</span>
+                                </div>
+                            </li>
+                            <li class="check-item">
+                                <input type="checkbox">
+                                <div class="check-text">
+                                    <strong>단추 잠김 여부</strong>
+                                    <span>纽扣是否可以扣上</span>
+                                </div>
+                            </li>
+                             <li class="check-item">
+                                <input type="checkbox">
+                                <div class="check-text">
+                                    <strong>필요 시 추가</strong>
+                                    <span></span>
+                                </div>
+                            </li>
+                            <!-- 필요시 리스트 <li>...</li> 복사해서 계속 추가 -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. 제품 사진 -->
+                <div>
+                    <div class="photo-header">
+                        <p class="section-label">제품 상세 사진 / 产品照片</p>
+                        <p class="desc">사진 클릭 시 확대 (点击照片放大)</p>
+                    </div>
+                    
+                    <div class="photo-grid">
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+1" alt="사진 1">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+2" alt="사진 2">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+3" alt="사진 3">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+4" alt="사진 4">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+5" alt="사진 5">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+6" alt="사진 6">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+7" alt="사진 7">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+8" alt="사진 8">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+9" alt="사진 9">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openopenImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+10" alt="사진 10">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ▲▲▲ 제품 추가 시 여기까지 복사 ▲▲▲ -->
+
+           <div class="product-block">
+                
+                <!-- 1. 제품 이름 -->
+                <div class="title-section">
+                    <p class="section-label">제품 이름 / 产品名称</p>
+                    <h3 class="product-name">
+                        와이드러쉬썬캡
+                        <span class="cn-name">/ 披肩防晒帽子</span>
+                    </h3>
+                </div>
+
+                <!-- 2. 검사 항목 -->
+                <div class="checklist-section">
+                    <p class="section-label">검사 항목 / 检查项目</p>
+                    <div class="checklist-box">
+                        <ul class="checklist-grid">
+                            <li class="check-item">
+                                <input type="checkbox">
+                                <div class="check-text">
+                                    <strong>색상</strong>
+                                    <span>颜色</span>
+                                </div>
+                            </li>
+                            <li class="check-item">
+                                <input type="checkbox">
+                                <div class="check-text">
+                                    <strong>오염 여부</strong>
+                                    <span>是否有污染</span>
+                                </div>
+                            </li>
+                            <li class="check-item">
+                                <input type="checkbox">
+                                <div class="check-text">
+                                    <strong>단추 잠김 여부</strong>
+                                    <span>纽扣是否可以扣上</span>
+                                </div>
+                            </li>
+                             <li class="check-item">
+                                <input type="checkbox">
+                                <div class="check-text">
+                                    <strong>필요 시 추가</strong>
+                                    <span></span>
+                                </div>
+                            </li>
+                            <!-- 필요시 리스트 <li>...</li> 복사해서 계속 추가 -->
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- 3. 제품 사진 -->
+                <div>
+                    <div class="photo-header">
+                        <p class="section-label">제품 상세 사진 / 产品照片</p>
+                        <p class="desc">사진 클릭 시 확대 (点击照片放大)</p>
+                    </div>
+                    
+                    <div class="photo-grid">
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+1" alt="사진 1">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+2" alt="사진 2">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+3" alt="사진 3">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+4" alt="사진 4">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+5" alt="사진 5">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+6" alt="사진 6">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+7" alt="사진 7">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+8" alt="사진 8">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+9" alt="사진 9">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                        <div class="photo-slot" onclick="openopenImageModal(this)">
+                            <img src="https://placehold.co/400x400/e2e8f0/64748b?text=Photo+10" alt="사진 10">
+                            <div class="photo-overlay"><span>확대 / 放大</span></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- ▲▲▲ 제품 추가 시 여기까지 복사 ▲▲▲ -->
+
+        </div>
+
+    </div>
+
+       <!-- 사진 확대 팝업(모달) HTML -->
+    <div id="image-modal" class="modal-bg">
+        <button onclick="closeImageModal()" class="modal-close-btn">&times;</button>
+        <img id="modal-image-element" src="" alt="확대된 이미지">
+        <p class="modal-desc">닫으려면 배경을 클릭하거나 우측 상단 X를 누르세요. / 点击背景或右上角关闭。</p>
+    </div>
+    <!-- ===================================================================== -->
+
+
+</body>
+</html>

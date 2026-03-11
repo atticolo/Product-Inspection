@@ -80,7 +80,7 @@
         }
 
         // 문서 로딩 완료 실행로직
-        window.addEventListener('DOMContentLoaded', () => {
+         function initApp() {
 
             allProducts = Array.from(document.querySelectorAll('.product-block'));
             filteredProducts = [...allProducts]; 
@@ -88,11 +88,11 @@
             showPage(1); 
             setupPagination();
 
-            // 검색 기능 
+            // 검색 기능 리스너
             const searchInput = document.getElementById('search-input');
             if (searchInput) {
                 searchInput.addEventListener('input', (e) => {
-                    const keyword = e.target.value.toLowerCase().trim(); 
+                    const keyword = e.target.value.toLowerCase().trim();
 
                     if (keyword === '') {
                         filteredProducts = [...allProducts];
@@ -108,4 +108,10 @@
                     showPage(currentPage);
                 });
             }
-        });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initApp);
+        } else {
+            initApp(); 
+        }

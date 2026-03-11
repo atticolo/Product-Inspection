@@ -1,8 +1,8 @@
-          /* 사진 마우스 오버 시 부드러운 효과 */
+
         .photo-slot { transition: all 0.2s ease-in-out; }
         .photo-slot:hover { transform: scale(1.02); box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); border-color: #3b82f6; }
    
-   /* 기본 색상 및 변수 설정 */
+   /* 변수  */
         :root {
             --primary: #3b82f6;
             --bg-main: #f3f4f6;
@@ -12,7 +12,6 @@
             --border-light: #e5e7eb;
         }
 
-        /* 전체 기본 스타일 */
         * { 
             box-sizing: border-box; 
         }
@@ -25,13 +24,12 @@
             line-height: 1.5;
         }
 
-        /* 레이아웃 컨테이너 */
         .container {
             max-width: 1024px;
             margin: 0 auto;
         }
 
-        /* 문서 헤더 (최상단) */
+        /* 헤더  */
         .main-header {
             text-align: center;
             margin-bottom: 2rem;
@@ -52,7 +50,7 @@
             margin-top: 1rem;
         }
 
-        /* 제품 블록 (하나의 제품을 감싸는 흰색 박스) */
+        /* 제품 박스 */
         .product-block {
             background-color: var(--bg-card);
             border-radius: 12px;
@@ -62,7 +60,7 @@
             border: 1px solid var(--border-light);
         }
 
-        /* 1. 제품 이름 섹션 */
+        /* 제품 이름 */
         .title-section {
             border-bottom: 2px solid var(--primary);
             padding-bottom: 1rem;
@@ -89,7 +87,7 @@
             font-weight: normal;
         }
 
-        /* 2. 검사 항목 섹션 */
+        /* 검사 항목  */
         .checklist-section {
             margin-bottom: 2rem;
         }
@@ -139,7 +137,7 @@
             color: var(--text-gray);
         }
 
-        /* 3. 사진 섹션 */
+        /* 사진 */
         .photo-header {
             display: flex;
             justify-content: space-between;
@@ -184,7 +182,7 @@
             display: block;
         }
         
-        /* 사진 호버 시 '확대' 글씨 효과 */
+        /* 사진 호버 확대 */
         .photo-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
@@ -207,20 +205,20 @@
             font-weight: bold;
         }
 
-        /* 팝업 모달 창 */
+        /* 팝업 */
         .modal-bg {
             position: fixed;
             top: 0; left: 0; right: 0; bottom: 0;
             background-color: rgba(0, 0, 0, 0.9);
             z-index: 50;
-            display: none; /* 평소에는 숨김 */
+            display: none; 
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 1rem;
         }
         .modal-bg.show {
-            display: flex; /* 자바스크립트로 .show 가 추가되면 보임 */
+            display: flex; 
         }
         .modal-close-btn {
             position: absolute;
@@ -254,11 +252,10 @@
             font-size: 1rem;
         }
 
- /* ======================================================= */
-/* 💻 반응형 디자인 (Media Queries)                        */
-/* ======================================================= */
+/* 반응형 */
 
-/* 💊 태블릿 버전 (가로 해상도 768px 이상) */
+
+/* 💊 태블릿 768px */
 @media (min-width: 768px) {
     body { padding: 20px; }
     .main-header { margin-bottom: 2rem; }
@@ -278,7 +275,7 @@
     .page-btn { padding: 0.5rem 1rem; font-size: 1rem; }
 }
 
-/* 💻 PC 버전 (가로 해상도 1024px 이상) */
+/*  PC  */
 @media (min-width: 1024px) {
     .main-header h1 { font-size: 2rem; }
     .main-header p { font-size: 0.875rem; }
@@ -297,7 +294,7 @@
     .photo-overlay span { font-size: 0.875rem; padding: 4px 12px; }
 }
 
-/* 페이지네이션 (페이지 번호) 스타일 */
+/* 페이지네이션 */
 .pagination {
     display: flex;
     justify-content: center;
@@ -310,5 +307,42 @@
     padding: 0.4rem 0.8rem;
     border: 1px solid var(--border-light);
     background-color: white;
-    /* ... (중략) ... */
+}
+
+
+/* 상단버튼 */
+.top-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background-color: var(--primary);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: none; 
+    align-items: center;
+    justify-content: center;
+    z-index: 40;
+    transition: all 0.3s ease;
+}
+.top-btn:hover { background-color: #2563eb; transform: translateY(-3px); }
+.top-btn.visible { display: flex; }
+
+/* 프린트 */
+@media print {
+    body { background-color: white; padding: 0; }
+    .container { max-width: 100%; margin: 0; }
+    .pagination, .top-btn, .desc, .photo-overlay { display: none !important; }
+    .product-block { 
+        display: block !important; 
+        page-break-inside: avoid; 
+        box-shadow: none;
+        border: 1px solid #ddd;
+        margin-bottom: 20px;
+    }
 }
